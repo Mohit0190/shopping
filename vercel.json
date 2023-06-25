@@ -6,7 +6,7 @@
             "use": "@vercel/node"
         },
         {
-            "src": "dist/",
+            "src": "dist/**",
             "use": "@vercel/staic"
         }
     ],
@@ -20,8 +20,12 @@
             "dest": "index.js"
         },
         {
-            "src": "/(.*)",
-            "dest": "dist/"
+            "src": "/",
+            "dest": "dist/index.html"
+        },
+        {
+            "src": "/(.+)",
+            "dest": "dist/$1"
         }
       
     ]
