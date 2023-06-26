@@ -1,5 +1,16 @@
 const model = require('../model/product');
+const ejs = require('ejs');
+const path = require('path');
 const Product = model.Product;
+
+exports.getAllProductsSSr = async (req, res) => {
+    const products = await Product.find()
+    ejs.renderFile(path.resolve(__dirname,'../pages/index.ejs'), {products:products},  function(err, str){
+       res.send(str)
+     
+    });
+}
+
 
 exports.createProduct = async (req, res) => {
     const product = new Product(req.body);
